@@ -9,7 +9,7 @@ class RecipeService {
       List<String> ingredients) async {
     final ingredientsStr = ingredients.join(',');
     final url = Uri.parse(
-      'https://api.spoonacular.com/recipes/findByIngredients?ingredients=$ingredientsStr&number=5&apiKey=$recipeApiKey',
+      'https://api.spoonacular.com/recipes/findByIngredients?ingredients=$ingredientsStr&number=10&apiKey=$recipeApiKey',
     );
 
     final response = await http.get(url);
