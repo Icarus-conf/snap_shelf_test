@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:snap_shelf/models/recipe_model.dart';
+import 'package:snap_shelf/recipe_detail_screen.dart';
 import 'package:snap_shelf/services/ingredient_detector_service.dart';
 import 'package:snap_shelf/services/recipe_service.dart';
 
@@ -171,32 +172,43 @@ class _IngredientDisplayScreenState extends State<IngredientDisplayScreen> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: _recipes.length,
                   itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: ListTile(
-                        contentPadding: const EdgeInsets.all(8.0),
-                        leading: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: CachedNetworkImage(
-                            imageUrl: _recipes[index].image,
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                            progressIndicatorBuilder:
-                                (context, url, downloadProgress) => Center(
-                              child: CircularProgressIndicator(
-                                  value: downloadProgress.progress),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => RecipeDetailScreen(
+                              recipeId: _recipes[index].id,
                             ),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
                           ),
+                        );
+                      },
+                      child: Card(
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
                         ),
-                        title: Text(_recipes[index].title),
-                        subtitle: Text(
-                            'Used Ingredients: ${_recipes[index].usedIngredientCount}'),
+                        child: ListTile(
+                          contentPadding: const EdgeInsets.all(8.0),
+                          leading: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: CachedNetworkImage(
+                              imageUrl: _recipes[index].image,
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                              progressIndicatorBuilder:
+                                  (context, url, downloadProgress) => Center(
+                                child: CircularProgressIndicator(
+                                    value: downloadProgress.progress),
+                              ),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                            ),
+                          ),
+                          title: Text(_recipes[index].title),
+                          subtitle: Text(
+                              'Used Ingredients: ${_recipes[index].usedIngredientCount}'),
+                        ),
                       ),
                     );
                   },

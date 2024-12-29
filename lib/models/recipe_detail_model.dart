@@ -1,264 +1,276 @@
-class RecipeDetailModel {
-  final num id;
-  final String title;
-  final String image;
-  final String imageType;
-  final num servings;
-  final num readyInMinutes;
-  final String license;
-  final String sourceName;
-  final String sourceUrl;
-  final String spoonacularSourceUrl;
-  final num aggregateLikes;
-  final num healthScore;
-  final num spoonacularScore;
-  final num pricePerServing;
-  final List<dynamic> analyzedInstructions;
-  final bool cheap;
-  final String creditsText;
-  final List<dynamic> cuisines;
-  final bool dairyFree;
-  final List<dynamic> diets;
-  final String gaps;
-  final bool glutenFree;
-  final String instructions;
-  final bool ketogenic;
-  final bool lowFodmap;
-  final List<dynamic> occasions;
-  final bool sustainable;
-  final bool vegan;
-  final bool vegetarian;
-  final bool veryHealthy;
-  final bool veryPopular;
-  final bool whole30;
-  final int weightWatcherSmartPoints;
-  final List<String> dishTypes;
-  final List<ExtendedIngredient> extendedIngredients;
-  final String summary;
-  final WinePairing winePairing;
+class Recipe {
+  final bool? vegetarian;
+  final bool? vegan;
+  final bool? glutenFree;
+  final bool? dairyFree;
+  final bool? veryHealthy;
+  final bool? cheap;
+  final bool? veryPopular;
+  final bool? sustainable;
+  final bool? lowFodmap;
+  final num? weightWatcherSmartPoints;
+  final String? gaps;
+  final num? preparationMinutes;
+  final num? cookingMinutes;
+  final num? aggregateLikes;
+  final num? healthScore;
+  final String? creditsText;
+  final String? license;
+  final String? sourceName;
+  final num? pricePerServing;
+  final List<Ingredient>? extendedIngredients;
+  final num? id;
+  final String? title;
+  final num? readyInMinutes;
+  final num? servings;
+  final String? sourceUrl;
+  final String? image;
+  final String? imageType;
+  final String? summary;
+  final List<String>? dishTypes;
+  final List<String>? cuisines;
+  final List<String>? diets;
+  final List<String>? occasions;
+  final String? instructions;
 
-  RecipeDetailModel({
-    required this.id,
-    required this.title,
-    required this.image,
-    required this.imageType,
-    required this.servings,
-    required this.readyInMinutes,
-    required this.license,
-    required this.sourceName,
-    required this.sourceUrl,
-    required this.spoonacularSourceUrl,
-    required this.aggregateLikes,
-    required this.healthScore,
-    required this.spoonacularScore,
-    required this.pricePerServing,
-    required this.analyzedInstructions,
-    required this.cheap,
-    required this.creditsText,
-    required this.cuisines,
-    required this.dairyFree,
-    required this.diets,
-    required this.gaps,
-    required this.glutenFree,
-    required this.instructions,
-    required this.ketogenic,
-    required this.lowFodmap,
-    required this.occasions,
-    required this.sustainable,
-    required this.vegan,
-    required this.vegetarian,
-    required this.veryHealthy,
-    required this.veryPopular,
-    required this.whole30,
-    required this.weightWatcherSmartPoints,
-    required this.dishTypes,
-    required this.extendedIngredients,
-    required this.summary,
-    required this.winePairing,
+  final num? spoonacularScore;
+  final String? spoonacularSourceUrl;
+
+  Recipe({
+    this.vegetarian,
+    this.vegan,
+    this.glutenFree,
+    this.dairyFree,
+    this.veryHealthy,
+    this.cheap,
+    this.veryPopular,
+    this.sustainable,
+    this.lowFodmap,
+    this.weightWatcherSmartPoints,
+    this.gaps,
+    this.preparationMinutes,
+    this.cookingMinutes,
+    this.aggregateLikes,
+    this.healthScore,
+    this.creditsText,
+    this.license,
+    this.sourceName,
+    this.pricePerServing,
+    this.extendedIngredients,
+    this.id,
+    this.title,
+    this.readyInMinutes,
+    this.servings,
+    this.sourceUrl,
+    this.image,
+    this.imageType,
+    this.summary,
+    this.dishTypes,
+    this.cuisines,
+    this.diets,
+    this.occasions,
+    this.instructions,
+    this.spoonacularScore,
+    this.spoonacularSourceUrl,
   });
 
-  factory RecipeDetailModel.fromJson(Map<String, dynamic> json) {
-    return RecipeDetailModel(
-      id: json['id'],
-      title: json['title'],
-      image: json['image'],
-      imageType: json['imageType'],
-      servings: json['servings'],
-      readyInMinutes: json['readyInMinutes'],
-      license: json['license'],
-      sourceName: json['sourceName'],
-      sourceUrl: json['sourceUrl'],
-      spoonacularSourceUrl: json['spoonacularSourceUrl'],
+  factory Recipe.fromJson(Map<String, dynamic> json) {
+    return Recipe(
+      vegetarian: json['vegetarian'],
+      vegan: json['vegan'],
+      glutenFree: json['glutenFree'],
+      dairyFree: json['dairyFree'],
+      veryHealthy: json['veryHealthy'],
+      cheap: json['cheap'],
+      veryPopular: json['veryPopular'],
+      sustainable: json['sustainable'],
+      lowFodmap: json['lowFodmap'],
+      weightWatcherSmartPoints: json['weightWatcherSmartPoints']?.toDouble(),
+      gaps: json['gaps'],
+      preparationMinutes: json['preparationMinutes'],
+      cookingMinutes: json['cookingMinutes'],
       aggregateLikes: json['aggregateLikes'],
       healthScore: json['healthScore'],
-      spoonacularScore: json['spoonacularScore'],
-      pricePerServing: json['pricePerServing'] as num,
-      analyzedInstructions: json['analyzedInstructions'],
-      cheap: json['cheap'],
       creditsText: json['creditsText'],
-      cuisines: json['cuisines'],
-      dairyFree: json['dairyFree'],
-      diets: json['diets'],
-      gaps: json['gaps'],
-      glutenFree: json['glutenFree'],
-      instructions: json['instructions'],
-      ketogenic: json['ketogenic'],
-      lowFodmap: json['lowFodmap'],
-      occasions: json['occasions'],
-      sustainable: json['sustainable'],
-      vegan: json['vegan'],
-      vegetarian: json['vegetarian'],
-      veryHealthy: json['veryHealthy'],
-      veryPopular: json['veryPopular'],
-      whole30: json['whole30'],
-      weightWatcherSmartPoints: json['weightWatcherSmartPoints'],
-      dishTypes: List<String>.from(json['dishTypes']),
-      extendedIngredients: (json['extendedIngredients'] as List)
-          .map((e) => ExtendedIngredient.fromJson(e))
-          .toList(),
+      license: json['license'],
+      sourceName: json['sourceName'],
+      pricePerServing: json['pricePerServing']?.toDouble(),
+      extendedIngredients: json['extendedIngredients'] != null
+          ? (json['extendedIngredients'] as List)
+              .map((e) => Ingredient.fromJson(e))
+              .toList()
+          : null,
+      id: json['id'],
+      title: json['title'],
+      readyInMinutes: json['readyInMinutes'],
+      servings: json['servings'],
+      sourceUrl: json['sourceUrl'],
+      image: json['image'],
+      imageType: json['imageType'],
       summary: json['summary'],
-      winePairing: WinePairing.fromJson(json['winePairing']),
+      dishTypes: json['dishTypes'] != null
+          ? List<String>.from(json['dishTypes'])
+          : null,
+      cuisines:
+          json['cuisines'] != null ? List<String>.from(json['cuisines']) : null,
+      diets: json['diets'] != null ? List<String>.from(json['diets']) : null,
+      occasions: json['occasions'] != null
+          ? List<String>.from(json['occasions'])
+          : null,
+      instructions: json['instructions'],
+      spoonacularScore: json['spoonacularScore']?.toDouble(),
+      spoonacularSourceUrl: json['spoonacularSourceUrl'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'vegetarian': vegetarian,
+      'vegan': vegan,
+      'glutenFree': glutenFree,
+      'dairyFree': dairyFree,
+      'veryHealthy': veryHealthy,
+      'cheap': cheap,
+      'veryPopular': veryPopular,
+      'sustainable': sustainable,
+      'lowFodmap': lowFodmap,
+      'weightWatcherSmartPoints': weightWatcherSmartPoints,
+      'gaps': gaps,
+      'preparationMinutes': preparationMinutes,
+      'cookingMinutes': cookingMinutes,
+      'aggregateLikes': aggregateLikes,
+      'healthScore': healthScore,
+      'creditsText': creditsText,
+      'license': license,
+      'sourceName': sourceName,
+      'pricePerServing': pricePerServing,
+      'extendedIngredients':
+          extendedIngredients?.map((e) => e.toJson()).toList(),
+      'id': id,
+      'title': title,
+      'readyInMinutes': readyInMinutes,
+      'servings': servings,
+      'sourceUrl': sourceUrl,
+      'image': image,
+      'imageType': imageType,
+      'summary': summary,
+      'dishTypes': dishTypes,
+      'cuisines': cuisines,
+      'diets': diets,
+      'occasions': occasions,
+      'instructions': instructions,
+      'spoonacularScore': spoonacularScore,
+      'spoonacularSourceUrl': spoonacularSourceUrl,
+    };
   }
 }
 
-class ExtendedIngredient {
-  final String aisle;
-  final num amount;
-  final String consitency;
-  final num id;
-  final String image;
-  final Measures measures;
-  final List<String> meta;
-  final String name;
-  final String original;
-  final String originalName;
-  final String unit;
+class Ingredient {
+  final num? id;
+  final String? aisle;
+  final String? image;
+  final String? consistency;
+  final String? name;
+  final String? nameClean;
+  final String? original;
+  final String? originalName;
+  final num? amount;
+  final String? unit;
+  final List<String>? meta;
+  final Measures? measures;
 
-  ExtendedIngredient({
-    required this.aisle,
-    required this.amount,
-    required this.consitency,
-    required this.id,
-    required this.image,
-    required this.measures,
-    required this.meta,
-    required this.name,
-    required this.original,
-    required this.originalName,
-    required this.unit,
+  Ingredient({
+    this.id,
+    this.aisle,
+    this.image,
+    this.consistency,
+    this.name,
+    this.nameClean,
+    this.original,
+    this.originalName,
+    this.amount,
+    this.unit,
+    this.meta,
+    this.measures,
   });
 
-  factory ExtendedIngredient.fromJson(Map<String, dynamic> json) {
-    return ExtendedIngredient(
-      aisle: json['aisle'],
-      amount: (json['amount'] as num).toDouble(),
-      consitency: json['consitency'],
+  factory Ingredient.fromJson(Map<String, dynamic> json) {
+    return Ingredient(
       id: json['id'],
+      aisle: json['aisle'],
       image: json['image'],
-      measures: Measures.fromJson(json['measures']),
-      meta: List<String>.from(json['meta']),
+      consistency: json['consistency'],
       name: json['name'],
+      nameClean: json['nameClean'],
       original: json['original'],
       originalName: json['originalName'],
+      amount: json['amount'],
       unit: json['unit'],
+      meta: json['meta'] != null ? List<String>.from(json['meta']) : null,
+      measures:
+          json['measures'] != null ? Measures.fromJson(json['measures']) : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'aisle': aisle,
+      'image': image,
+      'consistency': consistency,
+      'name': name,
+      'nameClean': nameClean,
+      'original': original,
+      'originalName': originalName,
+      'amount': amount,
+      'unit': unit,
+      'meta': meta,
+      'measures': measures?.toJson(),
+    };
   }
 }
 
 class Measures {
-  final Measure metric;
-  final Measure us;
+  final Measure? us;
+  final Measure? metric;
 
-  Measures({
-    required this.metric,
-    required this.us,
-  });
+  Measures({this.us, this.metric});
 
   factory Measures.fromJson(Map<String, dynamic> json) {
     return Measures(
-      metric: Measure.fromJson(json['metric']),
-      us: Measure.fromJson(json['us']),
+      us: json['us'] != null ? Measure.fromJson(json['us']) : null,
+      metric: json['metric'] != null ? Measure.fromJson(json['metric']) : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'us': us?.toJson(),
+      'metric': metric?.toJson(),
+    };
   }
 }
 
 class Measure {
-  final num amount;
-  final String unitLong;
-  final String unitShort;
+  final num? amount;
+  final String? unitShort;
+  final String? unitLong;
 
-  Measure({
-    required this.amount,
-    required this.unitLong,
-    required this.unitShort,
-  });
+  Measure({this.amount, this.unitShort, this.unitLong});
 
   factory Measure.fromJson(Map<String, dynamic> json) {
     return Measure(
-      amount: json['amount'] as num,
-      unitLong: json['unitLong'],
+      amount: json['amount'],
       unitShort: json['unitShort'],
+      unitLong: json['unitLong'],
     );
   }
-}
 
-class WinePairing {
-  final List<String> pairedWines;
-  final String pairingText;
-  final List<ProductMatch> productMatches;
-
-  WinePairing({
-    required this.pairedWines,
-    required this.pairingText,
-    required this.productMatches,
-  });
-
-  factory WinePairing.fromJson(Map<String, dynamic> json) {
-    return WinePairing(
-      pairedWines: List<String>.from(json['pairedWines']),
-      pairingText: json['pairingText'],
-      productMatches: (json['productMatches'] as List)
-          .map((e) => ProductMatch.fromJson(e))
-          .toList(),
-    );
-  }
-}
-
-class ProductMatch {
-  final num id;
-  final String title;
-  final String description;
-  final String price;
-  final String imageUrl;
-  final num averageRating;
-  final num ratingCount;
-  final num score;
-  final String link;
-
-  ProductMatch({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.price,
-    required this.imageUrl,
-    required this.averageRating,
-    required this.ratingCount,
-    required this.score,
-    required this.link,
-  });
-
-  factory ProductMatch.fromJson(Map<String, dynamic> json) {
-    return ProductMatch(
-      id: json['id'],
-      title: json['title'],
-      description: json['description'],
-      price: json['price'],
-      imageUrl: json['imageUrl'],
-      averageRating: json['averageRating'] as num,
-      ratingCount: json['ratingCount'],
-      score: json['score'] as num,
-      link: json['link'],
-    );
+  Map<String, dynamic> toJson() {
+    return {
+      'amount': amount,
+      'unitShort': unitShort,
+      'unitLong': unitLong,
+    };
   }
 }
