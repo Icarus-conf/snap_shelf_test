@@ -69,7 +69,7 @@ class _IngredientDisplayScreenState extends State<IngredientDisplayScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Detected Ingredients',
+          "Snap Shelf",
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.deepPurple,
